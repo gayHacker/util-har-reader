@@ -1,0 +1,18 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "dependencies": {
+    "har": "^1.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "flow": "node flow.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "oauth"
+  ],
+  "author": "Buba Lai",
+  "license": "ISC",
+  "description": ""
+}
