@@ -71,6 +71,7 @@ HarReader.prototype = {
         const MATCH_ALL = (!!!filters) || !(typeof filters.match === "string" || Array.isArray(filters.match)) ? null : filters.match;
         const MATCH_HOST = (!!!filters) || !(typeof filters.host === "string" || Array.isArray(filters.host)) ? null : filters.host;
         const EXACT_MATCH_HOST = (!!!filters) || !(typeof filters.exact_host === "string" || Array.isArray(filters.exact_host)) ? null : filters.exact_host;
+        const EXCLUDE_HOST = (!!!filters) || !(typeof filters.exclude_host === "string" || Array.isArray(filters.exclude_host)) ? null : filters.exclude_host;
 
         try {
             let entries = this._har.log.entries;
@@ -87,6 +88,9 @@ HarReader.prototype = {
                     return;
                 }
                 if (null != EXACT_MATCH_HOST && !this.findInStr(urlObj.host, EXACT_MATCH_HOST, "g", true)) {
+                    return;
+                }
+                if (null != EXCLUDE_HOST && this.findInStr(urlObj.host, EXCLUDE_HOST, "g", true)) {
                     return;
                 }
 
